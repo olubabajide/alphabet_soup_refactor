@@ -23,7 +23,7 @@ A reusable, buildable Python package to solve word-search puzzles.
 
 ### 2. Create & activate a virtual environment. This isolates your Python environment so you can safely install packages
     a. python3 -m venv .myenv
-    b. source .myenv/bin/activate          # Activate your venv from the project root (where setup.py lives) for macOS/Linux
+    b. source .myenv/bin/activate          # Activate your venv from the project root (where pyproject.toml lives) for macOS/Linux
     c. .\.myenv\Scripts\Activate.ps1       #for Windows PowerShell
 
 ### 3. Install the package
