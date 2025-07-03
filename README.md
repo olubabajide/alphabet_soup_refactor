@@ -1,49 +1,62 @@
 
-
 # README.md
 ```markdown
 # Alphabet Soup
 
 A reusable, buildable Python package to solve word-search puzzles.
 
-## Installation
+## Features
 
-```bash
-pip install .
+- Load puzzles from simple text files (e.g. `3x3`, grid lines, then word list)
+- Find words in all eight directions (horizontal, vertical, diagonal, forwards & backwards)
+- Command-line interface with `--version` flag
+- Fully tested core logic
+
+---
+## Quickstart
 ```
-## Usage
+### 1. Clone & enter the project Create
 
-# Use a Virtual Environment. This isolates your Python environment so you can safely install packages:
-cd ~/alphabet_soup
-python3 -m venv myenv
-# Activate your venv from the project root (where setup.py lives):
-    source myenv/bin/activate
+    a. git clone https://your.repo.url/alphabet_soup.git
 
-```bash
-alphabet-soup path/to/puzzle.txt
+    b. cd alphabet_soup
 
-If what you really want is for your shell to “see” the alphabet-soup stub every time you open a terminal, you just need to append its bin-folder to your PATH. Assuming your venv lives at ~/alphabet_soup/myenv, you can do:
+### 2. Create & activate a virtual environment. This isolates your Python environment so you can safely install packages
+    a. python3 -m venv .myenv
+    b. source .myenv/bin/activate          # Activate your venv from the project root (where setup.py lives) for macOS/Linux
+    c. .\.myenv\Scripts\Activate.ps1       #for Windows PowerShell
 
-# add the venv’s bin dir to YOUR user’s PATH
-echo 'export PATH="$HOME/alphabet_soup/myenv/bin:$PATH"' >> ~/.bashrc
+### 3. Install the package
+    a. pip install -e .     #Editable install (for development)
 
-# then reload your rc (or just open a new terminal)
-source ~/.bashrc
+    b. pip install .       #Regular install
+  ****Check if alphabet-soup was installed and what version installed
 
-which alphabet-soup
-head -n1 $(which alphabet-soup)
-alphabet-soup path/to/puzzle.txt
+    c. which alphabet-soup
+
+    d. alphabet-soup --version
+
+****If alphabet-soup isn’t on your $PATH, you can either:
+
+    e. echo 'export PATH="$PWD/.myenv/bin:$PATH"' >> ~/.bashrc   ##for  macOS/Linux
+    f. source ~/.bashrc                                           ##then reload your rc (or just open a new terminal)
+    g. add .\.myenv\Scripts\Activate.ps1                           ##for windows Powershell
+
+
+### 4. Usage
+    a. alphabet-soup path/to/puzzle_input.txt
+    b. python -m alphabet_soup.cli path/to/puzzle.txt    ##to bypass the wrapper
 
 ```
-
 ## Project Structure
-
-- **src/alphabet_soup/core.py**: Puzzle loading and search algorithms
-- **src/alphabet_soup/cli.py**: Entry point and argument parsing
-- **tests/**: Unit tests
-
-```bash
-pytest
-```
-```
-``` 
+alphabet_soup/
+├── pyproject.toml            # PEP 621/517 build configuration
+├── README.md
+├── src/
+│   └── alphabet_soup/
+│       ├── __init__.py       # package init & __version__
+│       ├── core.py           # load_puzzle & find_word logic
+│       ├── cli.py            # console entry-point + --version
+│       └── __main__.py       # allow `python -m alphabet_soup`
+└── tests/
+    └── test_core.py          # pytest unit tests
